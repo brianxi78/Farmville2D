@@ -9,13 +9,20 @@ public class MyFarm {
     public MyFarm() {
 
         // declare a 2D grid of plots
+        grid = new Plot[3][4];
 
         // construct a 2D grid of plots
+        for(int x = 0; x < grid.length; x++){
+            for(int i = 0; i < grid[x].length; i++){
+                grid[x][i] = new Plot();
+            }
+        }
 
 
         // methods to write together during class
-        totalPlants();
+//        totalPlants();
         totalCarrots();
+        averageNumberOfPlants();
 
         /***
          * for each additional method you code, call it here
@@ -26,16 +33,37 @@ public class MyFarm {
 
     public void totalPlants() {
         // how many plants are there in total across all plots?
+        int total = 0;
+        for(int x = 0; x < grid.length; x++){
+            for(int i = 0; i < grid[x].length; i++){
+                total = total + grid[x][i].numberOfPlants;
+            }
+        }
+        System.out.println("There are " + total + " plants");
     }
 
     public void totalCarrots() {
         // how many total carrots are there across all plots?
-
+        int total = 0;
+        for(int x = 0; x < grid.length; x++){
+            for(int i = 0; i < grid[x].length; i++){
+                if(grid[x][i].plantName == "carrot"){
+                    total = total + grid[x][i].numberOfPlants;
+                }
+            }
+        }
+        System.out.println("There are " + total + " carrots");
     }
 
     public void averageNumberOfPlants() {
         // what is the average number of plants across the whole row?
-
+        int total = 0;
+        for(int x=0; x<grid.length;x++){
+            for(int i = 0; i < grid[x].length; i++){
+                total = total + grid[x][i].numberOfPlants;
+            }
+        }
+        System.out.println("Average: " + total/12);
     }
 
     public void numberOfTomatoPlots() {
